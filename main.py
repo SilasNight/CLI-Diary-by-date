@@ -8,6 +8,7 @@ class Diary:
         print("What happened today?")
         self.day_lines = []
         date = datetime.datetime.now()
+
         self.date = datetime.datetime.strftime(date,"%d-%m-%Y")
         self.path = f"Diary/{self.date}.txt"
         while True:
@@ -23,7 +24,8 @@ class Diary:
 
 
     def write(self):
-        self.day_lines = [self.date]
+        time = datetime.datetime.now().strftime("%H:%M")
+        self.day_lines = [f"{self.date} - {time}"]
         while True:
             action = input()
             if action.title() == "Exit":
