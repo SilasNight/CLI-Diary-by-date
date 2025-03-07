@@ -11,7 +11,7 @@ class Diary:
         self.date = datetime.datetime.strftime(date,"%d-%m-%Y")
         self.path = f"Diary/{self.date}.txt"
         while True:
-            query = input("Do you have something to write?")
+            query = input("Do you have something to write?\n").lower()
             if query == "yes":
                 self.write()
             elif query == "no":
@@ -26,7 +26,7 @@ class Diary:
         self.day_lines = [self.date]
         while True:
             action = input()
-            if action == "Exit":
+            if action.title() == "Exit":
                 self.wrote = "yes"
                 break
             else:
@@ -34,6 +34,9 @@ class Diary:
 
     def save(self):
         exist = self.check_file()
+        self.day_lines = [item+"\n" for item in self.day_lines]
+        length = len(self.day_lines)-1
+        self.day_lines[length] = self.day_lines[length]+"\n"
         with open(self.path,exist) as file:
             file.writelines(self.day_lines)
 
