@@ -11,7 +11,7 @@ class Diary:
         self.date = datetime.datetime.strftime(date,"%d-%m-%Y")
         self.path = f"Diary/{self.date}.txt"
         while True:
-            query = input("Do you have something to write?\n").lower()
+            query = input("Do you have something to write?(yes/no)\n").lower()
             if query == "yes":
                 self.write()
             elif query == "no":
